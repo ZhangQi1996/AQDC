@@ -1,0 +1,5 @@
+Looking in indexes: http://mirrors.tencentyun.com/pypi/simple
+Collecting django-crispy-forms
+  Downloading http://mirrors.tencentyun.com/pypi/packages/9a/05/6bad05742d185ec2fabfa4deab05cafde286eb3f383fba24b3674340aca2/django_crispy_forms-1.7.2-py2.py3-none-any.whl (105kB)
+Installing collected packages: django-crispy-forms
+Successfully installed django-crispy-forms-1.7.2

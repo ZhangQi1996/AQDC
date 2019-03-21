@@ -138,8 +138,8 @@ def check_update_cur_data():
         while True:
             if global_cache_acquire():  # 获得缓存锁
                 global_cache_set_cur_data(cur_data=cur_data)  # 更新缓存
-                global_cache_release()  # 释放缓存锁
                 global_cache_set_last_time()  # 重置当前时间
+				global_cache_release()  # 释放缓存锁
                 return True
     return False
 

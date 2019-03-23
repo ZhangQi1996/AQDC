@@ -25,8 +25,8 @@ SECRET_KEY = 'z4opnv-aoc5!iyo#7sc#d)yb1l7$k$^7-@&i=6c8n@kxi=l_!x'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['127.0.0.1', 'localhost', '118.25.18.117']
-
+# ALLOWED_HOSTS = ['127.0.0.1', 'localhost', '118.25.18.117']
+ALLOWED_HOSTS = ['*']
 
 # Application definition
 
@@ -54,7 +54,8 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-X_FRAME_OPTIONS = 'SAMEORIGIN' # 设置iframe访问
+# X_FRAME_OPTIONS = 'SAMEORIGIN' # 设置iframe访问
+X_FRAME_OPTIONS = 'ALLOW-FROM *' # 设置iframe访问
 
 ROOT_URLCONF = 'aqdc.urls'
 

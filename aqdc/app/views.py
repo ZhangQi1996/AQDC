@@ -1,7 +1,7 @@
 # This is an auto-generated Django-REST-FRAMEWORK views module.
 from .serializers import AqiInfoSerializer, CityProvSerializer, ProvSerializer, CurDataSerializer
 from rest_framework import generics
-from .globals import *
+from aqdc.aqdc.globals import *
 from rest_framework.response import Response
 from django.views.decorators.http import require_http_methods
 from django.http import JsonResponse

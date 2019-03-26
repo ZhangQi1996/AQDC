@@ -77,7 +77,6 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'aqdc.wsgi.application'
 
-
 # Database
 # https://docs.djangoproject.com/en/2.1/ref/settings/#databases
 
@@ -93,10 +92,25 @@ DATABASES = {
         'PASSWORD': 'zq15067522063',
         'HOST': '120.24.217.229',
         'PORT': '3306',
-    }
+    },
+    'ip_query': {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'fis',
+        'USER': 'root',
+        'PASSWORD': 'zq15067522063',
+        'HOST': '120.24.217.229',
+        'PORT': '3306',
+    },
 }
 
+DATABASE_ROUTERS = ['aqdc.database_router.DatabaseAppsRouter']
 
+DATABASE_APPS_MAPPING = {
+    # example:
+    # 'app_name':'database_name',
+    'app': 'default',
+    'ip_query': 'ip_query',
+}
 # Password validation
 # https://docs.djangoproject.com/en/2.1/ref/settings/#auth-password-validators
 

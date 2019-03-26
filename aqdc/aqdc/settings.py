@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'app',
+    'ip_query',
     'rest_framework',
     'xadmin',   # 添加
     'crispy_forms', # 添加

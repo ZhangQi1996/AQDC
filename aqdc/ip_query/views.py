@@ -1,8 +1,4 @@
-
 from rest_framework import generics
-from rest_framework.response import Response
-from django.views.decorators.http import require_http_methods
-from django.http import JsonResponse
 from aqdc.aqdc.globals import *
 from .models import IpInfo
 from .serializers import IpInfoSerializer

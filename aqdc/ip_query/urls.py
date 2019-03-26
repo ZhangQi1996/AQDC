@@ -13,22 +13,13 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
-# from django.contrib import admin
-from django.urls import path, include
-import xadmin
-xadmin.autodiscover()
+from django.urls import path, register_converter
+from .registers import IpConverter
+from .views import *
 
-from xadmin.plugins import xversion
-xversion.register_models()
+
+register_converter(IpConverter, 'ip')   # match Chinese, 0-9, -, a-z, A-Z
 
 urlpatterns = [
-    path('xadmin/', xadmin.site.urls),
-    path('v1/', include('app.urls')),
-    path('ip/', include('ip_query.urls')),
+    path('one/<ip:pk>/', IpInfoDetail.as_view()),
 ]
-from django.conf import settings
-from django.conf.urls import url
-from django.views import static
-if settings.DEBUG is False:
-    urlpatterns.append(url(r'^static/(?P<path>.*)$', static.serve,
-      {'document_root': settings.STATIC_ROOT}, name='static'))

@@ -54,8 +54,8 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-X_FRAME_OPTIONS = 'SAMEORIGIN' # 设置iframe访问
-# X_FRAME_OPTIONS = 'ALLOW-FROM *' # 设置iframe访问
+# X_FRAME_OPTIONS = 'SAMEORIGIN' # 设置iframe访问
+X_FRAME_OPTIONS = 'ALLOW-FROM *' # 设置iframe访问
 
 ROOT_URLCONF = 'aqdc.urls'
 

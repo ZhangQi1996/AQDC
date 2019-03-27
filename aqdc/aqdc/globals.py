@@ -5,7 +5,8 @@ import time
 from threading import Lock
 from rest_framework.response import Response
 from rest_framework import status
-from aqdc.app.models import *
+from app.models import *
+from django.conf import settings
 
 # **********************************************************************************
 
@@ -150,6 +151,7 @@ def catch_exception(func):
         try:
             return func(*args, **kwargs)
         except Exception as e:
-            global_err_addr(e)
+            if settings.DEBUG is False:
+                global_err_addr(e)
             return Response({"detail": "内部错误"}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
     return wrapper

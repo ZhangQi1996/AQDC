@@ -21,5 +21,5 @@ from .views import *
 register_converter(IpConverter, 'ip')   # match Chinese, 0-9, -, a-z, A-Z
 
 urlpatterns = [
-    path('one/<ip:pk>/', IpInfoDetail.as_view()),
+    path('query/<ip:ip_addr>/', IpInfoDetail.as_view()),
 ]

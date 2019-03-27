@@ -19,7 +19,7 @@ class DatabaseAppsRouter(object):
     def db_for_read(self, model, **hints):
         """"Point all read operations to the specific database."""
         """将所有读操作指向特定的数据库。"""
-        if model.meta.app_label in DATABASE_MAPPING:
+        if model._meta.app_label in DATABASE_MAPPING:
             return DATABASE_MAPPING[model._meta.app_label]
         return None
 

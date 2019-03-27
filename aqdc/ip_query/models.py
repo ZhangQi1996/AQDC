@@ -31,3 +31,4 @@ class IpInfo(models.Model):
     class Meta:
         managed = False
         db_table = 'ip_info'
+        app_label = 'ip_query'

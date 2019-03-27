@@ -104,12 +104,11 @@ DATABASES = {
     },
 }
 
-DATABASE_ROUTERS = ['aqdc.database_router.DatabaseAppsRouter']
+DATABASE_ROUTERS = ['aqdc.db_router.DatabaseAppsRouter']
 
 DATABASE_APPS_MAPPING = {
     # example:
     # 'app_name':'database_name',
-    'app': 'default',
     'ip_query': 'ip_query',
 }
 # Password validation

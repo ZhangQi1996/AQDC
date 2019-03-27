@@ -1,7 +1,7 @@
 # This is an auto-generated Django-REST-FRAMEWORK views module.
 from .serializers import AqiInfoSerializer, CityProvSerializer, ProvSerializer, CurDataSerializer
 from rest_framework import generics
-from aqdc.aqdc.globals import *
+from aqdc.globals import *
 from rest_framework.response import Response
 from django.views.decorators.http import require_http_methods
 from django.http import JsonResponse
@@ -188,10 +188,10 @@ class CurDataDetail(generics.RetrieveUpdateDestroyAPIView):
 	@catch_exception
 	def get(self, request, *args, **kwargs):
 		check_update_cur_data()		# 检查更新缓存
-		city_code = kwargs['pk']
+		city_code = int(kwargs['pk'])
 		for item in global_cache_get_cur_data():
 			if item.city_code == city_code:
-				return Response(CurDataSerializer(item))
+				return Response(self.serializer_class(item, many=False).data)
 		return Response({"detail": "未找到。"}, status=status.HTTP_404_NOT_FOUND)
 
 	@catch_exception

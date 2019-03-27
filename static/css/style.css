@@ -1,11 +1,48 @@
 @media (min-width: 768px){
-		.container {
-		width: 750px;
-			padding-right: 15px;
-			padding-left: 15px;
-			margin-right: auto;
-			margin-left: auto;
-		}
+	.drawer-inner-btn-wrapper {
+		margin-top: 40px;
+		margin-bottom: 20px;
+	}
+	
+	.drawer-inner-col {
+		text-align: center;
+	}
+	
+	.table-error td {
+		background-color: #fff;
+		color: #000;
+	}
+	.table-level1 td { /* 要加td */
+		background-color: #73FF73;
+		color: #000;
+	}
+	.table-level2 td {
+		background-color: #FFFF82;
+		color: #000;
+	}
+	.table-level3 td {
+		background-color: #FFB973;
+		color: #000;
+	}
+	.table-level4 td {
+		background-color: #FF7373;
+		color: #000;
+	}
+	.table-level5 td {
+		background-color: #AF7373;
+		color: #000;
+	}
+	.table-level6 td {
+		background-color: #737373;
+		color: #000;
+	}
+	.container {
+	width: 750px;
+		padding-right: 15px;
+		padding-left: 15px;
+		margin-right: auto;
+		margin-left: auto;
+	}
 }
 @media (min-width:992px) {
 	.container {

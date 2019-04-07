@@ -31,6 +31,11 @@ class CityProvList(generics.ListCreateAPIView):
 		return [v for v in Prov.objects.values_list('prov_name', flat=True)]
 
 	@staticmethod
+	@catch_exception
+	def _get_all_cities_code():
+		return [v for v in CityProv.objects.values_list('city_code', flat=True)]
+
+	@staticmethod
 	@require_http_methods(['GET'])
 	@catch_exception
 	def get_all_provs_name(req):
@@ -100,6 +105,18 @@ class AqiInfoDetail(generics.RetrieveUpdateDestroyAPIView):
 	'''包含request.method: GET(pk)-->AqiInfo个体查, PUT-->改, DELETE-->删'''
 	queryset = AqiInfo.objects.all()
 	serializer_class = AqiInfoSerializer
+
+	@staticmethod
+	@require_http_methods(['GET'])
+	@catch_exception
+	def get_aqi_infos_for_certain_city(req, city_code, days=30):
+		"""获取特定城市过去数天的AQI"""
+		if city_code not in CityProvList._get_all_cities_code():
+			return JsonResponse({"detail": "未找到。"}, json_dumps_params={'ensure_ascii': False})
+		aqi_infos = AqiInfo.objects.raw("SELECT * FROM aqi_info  WHERE city_code=%s AND "
+										"DATE_SUB(CURDATE(), INTERVAL %s DAY) <= DATE(DATE)" % (city_code, days))
+		ret = AqiInfoSerializer(aqi_infos, many=True).data
+		return JsonResponse(ret, safe=False, json_dumps_params={'ensure_ascii': False})
 
 	@catch_exception
 	def get(self, request, *args, **kwargs):
@@ -185,10 +202,24 @@ class CurDataDetail(generics.RetrieveUpdateDestroyAPIView):
 	queryset = CurData.objects.all()
 	serializer_class = CurDataSerializer
 
+	@staticmethod
+	@require_http_methods(['GET'])
+	@catch_exception
+	def get_all_infos_for_hn_certain_city(req, city_code, hours=24):
+		"""获取河南特定城市过去数小时的info"""
+		if str(city_code)[:2] != '41':
+			return JsonResponse({"detail": "所查找的城市非河南省地区城市。"}, json_dumps_params={'ensure_ascii': False})
+		if city_code not in CityProvList._get_all_cities_code():
+			return JsonResponse({"detail": "未找到。"}, json_dumps_params={'ensure_ascii': False})
+		infos = CurData.objects.raw("SELECT * FROM cur_data WHERE city_code=%s AND "
+									"TIME > DATE_SUB(NOW(),INTERVAL %s HOUR)" % (city_code, hours))
+		ret = CurDataSerializer(infos, many=True).data
+		return JsonResponse(ret, safe=False, json_dumps_params={'ensure_ascii': False})
+
 	@catch_exception
 	def get(self, request, *args, **kwargs):
 		check_update_cur_data()		# 检查更新缓存
-		city_code = int(kwargs['pk'])
+		city_code = kwargs['city_code']
 		for item in global_cache_get_cur_data():
 			if item.city_code == city_code:
 				return Response(self.serializer_class(item, many=False).data)

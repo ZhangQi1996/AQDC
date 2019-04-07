@@ -26,9 +26,11 @@ urlpatterns = [
     path('city_prov/all/', CityProvList.as_view()),
     path('city_prov/one/<common:pk>/', CityProvDetail.as_view()),
     path('cur_data/all/', CurDataList.as_view()),
-    path('cur_data/one/<common:pk>/', CurDataDetail.as_view()),
+    path('cur_data/one/<int:city_code>/', CurDataDetail.as_view()),
+    path('cur_data/one/<int:city_code>/<int:hours>/', CurDataDetail.get_all_infos_for_hn_certain_city),
     path('aqi_info/all/', AqiInfoList.as_view()),
     path('aqi_info/one/<common:pk>/', AqiInfoDetail.as_view()),
+    path('aqi_info/one/<int:city_code>/<int:days>/', AqiInfoDetail.get_aqi_infos_for_certain_city),
     path('cities/<common:prov_name>/', CityProvList.get_all_cities_for_certain_prov),
     path('provs/', CityProvList.get_all_provs_name),
 ]

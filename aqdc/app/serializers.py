@@ -6,7 +6,7 @@ from rest_framework import serializers
 class AqiInfoSerializer(serializers.ModelSerializer):
 	class Meta:
 		model = AqiInfo
-		fields = ('city_code', 'date', 'pri_pollutant')
+		fields = ('city_code', 'date', 'pri_pollutant', 'aqi')
 
 
 class CityProvSerializer(serializers.ModelSerializer):

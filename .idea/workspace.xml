@@ -1,16 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="c29b6f4c-484e-412f-aeca-06620147cf14" name="Default" comment="修复无AqiInfo中无aqi">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/aqdc/aqdc/globals.py" beforeDir="false" afterPath="$PROJECT_DIR$/aqdc/aqdc/globals.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/dist/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/css/app.2fbfcb049689eaed2b2a7e42500f67ed.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/css/app.2fbfcb049689eaed2b2a7e42500f67ed.css.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/app.c7858c663241355894a6.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/app.c7858c663241355894a6.js.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/manifest.2ae2e69a05c33dfc65f8.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/static/js/manifest.2ae2e69a05c33dfc65f8.js.map" afterDir="false" />
-    </list>
+    <list default="true" id="c29b6f4c-484e-412f-aeca-06620147cf14" name="Default" comment="1.更新后台实时数据获取间隔：从1h-&gt;10min&#10;2.前端页面更新footer:添加公安网备号" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -222,7 +213,14 @@
       <option name="project" value="LOCAL" />
       <updated>1554774572022</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="1.更新后台实时数据获取间隔：从1h-&gt;10min&#10;2.前端页面更新footer:添加公安网备号">
+      <created>1555850571522</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1555850571522</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -256,7 +254,8 @@
     <MESSAGE value="增加了ip查询模块" />
     <MESSAGE value="增加了查询数天aqi，查询数小时的info" />
     <MESSAGE value="修复无AqiInfo中无aqi" />
-    <option name="LAST_COMMIT_MESSAGE" value="修复无AqiInfo中无aqi" />
+    <MESSAGE value="1.更新后台实时数据获取间隔：从1h-&gt;10min&#10;2.前端页面更新footer:添加公安网备号" />
+    <option name="LAST_COMMIT_MESSAGE" value="1.更新后台实时数据获取间隔：从1h-&gt;10min&#10;2.前端页面更新footer:添加公安网备号" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/README.md">

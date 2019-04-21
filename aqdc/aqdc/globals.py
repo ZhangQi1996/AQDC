@@ -30,11 +30,11 @@ global_err = {
 
 # **********************************************************************************
 
-def global_cache_time_interval_timeout(time_interval=3600):
+def global_cache_time_interval_timeout(time_interval=600):
     """
     测试当前调用本函数跟global_cache中的last_time时间间隔是否大于time_interval
     是返回True，否则返回False
-    :param time_interval: 时间间隔，默认是一小时
+    :param time_interval: 时间间隔，默认是10分钟
     :return: boolean
     """
     if time.time() - global_cache.get('last_time') > time_interval:

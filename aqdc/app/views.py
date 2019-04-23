@@ -5,6 +5,7 @@ from aqdc.globals import *
 from rest_framework.response import Response
 from django.views.decorators.http import require_http_methods
 from django.http import JsonResponse
+from django.db.models import Q
 
 class AqiInfoList(generics.ListCreateAPIView):
 	'''包含request.method: GET-->List查, POST-->增'''
@@ -100,6 +101,14 @@ class CurDataList(generics.ListCreateAPIView):
 		#
 		# return self.create(request, *args, **kwargs)
 
+	@staticmethod
+	@require_http_methods(['GET'])
+	@catch_exception
+	def get_relevant_predicted_cities_cur_data(request):
+		ret = CurDataList.queryset.filter(Q(city_code=410100) | Q(city_code=410200) | Q(city_code=410300) |
+						Q(city_code=410700) | Q(city_code=411000))
+		ret = CurDataSerializer(ret, many=True).data
+		return JsonResponse(ret, safe=False, json_dumps_params={'ensure_ascii': False})
 
 class AqiInfoDetail(generics.RetrieveUpdateDestroyAPIView):
 	'''包含request.method: GET(pk)-->AqiInfo个体查, PUT-->改, DELETE-->删'''
@@ -109,7 +118,7 @@ class AqiInfoDetail(generics.RetrieveUpdateDestroyAPIView):
 	@staticmethod
 	@require_http_methods(['GET'])
 	@catch_exception
-	def get_aqi_infos_for_certain_city(req, city_code, days=30):
+	def get_aqi_infos_for_certain_city(request, city_code, days=30):
 		"""获取特定城市过去数天的AQI"""
 		if city_code not in CityProvList._get_all_cities_code():
 			return JsonResponse({"detail": "未找到。"}, json_dumps_params={'ensure_ascii': False})

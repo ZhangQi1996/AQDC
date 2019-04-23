@@ -28,6 +28,7 @@ urlpatterns = [
     path('cur_data/all/', CurDataList.as_view()),
     path('cur_data/one/<int:city_code>/', CurDataDetail.as_view()),
     path('cur_data/one/<int:city_code>/<int:hours>/', CurDataDetail.get_all_infos_for_hn_certain_city),
+    path('cur_data/part/rlv_pred_cities/', CurDataList.get_relevant_predicted_cities_cur_data),
     path('aqi_info/all/', AqiInfoList.as_view()),
     path('aqi_info/one/<common:pk>/', AqiInfoDetail.as_view()),
     path('aqi_info/one/<int:city_code>/<int:days>/', AqiInfoDetail.get_aqi_infos_for_certain_city),

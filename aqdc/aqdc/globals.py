@@ -28,6 +28,11 @@ global_err = {
     'lock': Lock(),
 }
 
+global_city_code_to_city_name_map = {
+    'map': None,
+    'lock': Lock(),
+}
+
 # **********************************************************************************
 
 def global_cache_time_interval_timeout(time_interval=600):
@@ -74,6 +79,23 @@ def global_cache_release():
     :return:
     """
     global_cache['lock'].release()
+
+
+def global_city_code_to_city_name_map_acquire(blocking=True, timeout=-1):
+    """
+    获取global_city_code_to_city_name_map的锁
+    :param timeout: 设置获取锁的
+    :return:
+    """
+    return global_city_code_to_city_name_map['lock'].acquire(blocking=blocking, timeout=timeout)
+
+
+def global_city_code_to_city_name_map_release():
+    """
+    释放global_city_code_to_city_name_map的锁
+    :return:
+    """
+    global_city_code_to_city_name_map['lock'].release()
 
 # ***********************************************************
 
@@ -155,3 +177,15 @@ def catch_exception(func):
                 global_err_addr(e)
             return Response({"detail": "内部错误"}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
     return wrapper
+
+
+def get_global_city_code_to_city_name_map():
+    while global_city_code_to_city_name_map['map'] is None:
+        if global_city_code_to_city_name_map_acquire():  # 获得global_city_code_to_city_name_map锁
+            map = {}
+            res = CityProv.objects.all()
+            for city_prov in res:
+                map[city_prov.city_code] = city_prov.city_name
+            global_city_code_to_city_name_map['map'] = map
+            global_city_code_to_city_name_map_release()  # 释放global_city_code_to_city_name_map锁
+    return global_city_code_to_city_name_map['map']

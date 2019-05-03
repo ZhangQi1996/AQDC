@@ -105,7 +105,7 @@ class CurDataList(generics.ListCreateAPIView):
 	@require_http_methods(['GET'])
 	@catch_exception
 	def get_relevant_predicted_cities_cur_data(request):
-		ret = CurDataList.queryset.filter(Q(city_code=410100) | Q(city_code=410200) | Q(city_code=410300) |
+		ret = CurDataList.queryset.filter(Q(city_code=410100) | Q(city_code=410300) |
 						Q(city_code=410700) | Q(city_code=411000))
 		ret = CurDataSerializer(ret, many=True).data
 		return JsonResponse(ret, safe=False, json_dumps_params={'ensure_ascii': False})

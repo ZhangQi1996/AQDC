@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'app',
     'ip_query',
+    'aq_pred',
     'rest_framework',
     'xadmin',   # 添加
     'crispy_forms', # 添加
@@ -160,4 +161,7 @@ EMAIL_HOST = 'smtp.163.com'
 EMAIL_PORT = 25
 EMAIL_HOST_USER = '18239961260@163.com'
 EMAIL_HOST_PASSWORD = 'zq15067522063'
+
+
+VERSION = 'v1/'
 

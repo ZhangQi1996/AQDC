@@ -15,6 +15,7 @@ Including another URLconf
 """
 # from django.contrib import admin
 from django.urls import path, include
+from django.conf import settings
 import xadmin
 xadmin.autodiscover()
 
@@ -22,9 +23,10 @@ from xadmin.plugins import xversion
 xversion.register_models()
 
 urlpatterns = [
-    path('xadmin/', xadmin.site.urls),
-    path('v1/', include('app.urls')),
-    path('ip/', include('ip_query.urls')),
+    path(settings.VERSION + 'xadmin/', xadmin.site.urls),
+    path(settings.VERSION + 'app/', include('app.urls')),
+    path(settings.VERSION + 'ip_query/', include('ip_query.urls')),
+    path(settings.VERSION + 'aq_pred/', include('aq_pred.urls')),
 ]
 from django.conf import settings
 from django.conf.urls import url

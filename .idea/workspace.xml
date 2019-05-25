@@ -2,7 +2,425 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c29b6f4c-484e-412f-aeca-06620147cf14" name="Default" comment="接口查询中删除对区域码为410200的数据查询">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/aqdc/aq_pred/model_weights.h5" beforeDir="false" afterPath="$PROJECT_DIR$/aqdc/aq_pred/model_weights.h5" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/aqdc/aq_pred/x_params_list.txt" beforeDir="false" afterPath="$PROJECT_DIR$/aqdc/aq_pred/x_params_list.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/aqdc/aq_pred/y_params.txt" beforeDir="false" afterPath="$PROJECT_DIR$/aqdc/aq_pred/y_params.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/css/app.0a0a0d098b287a10851cd43aaea0e1a2.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/css/app.0a0a0d098b287a10851cd43aaea0e1a2.css.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/css/style.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/fonts/ionicons.143146f.woff2" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/fonts/ionicons.99ac330.woff" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/fonts/ionicons.d535a25.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/fonts/ionicons.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/fonts/ionicons.woff" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/img/aq_predict_model.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/img/bg.ddb81d4.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/img/bg.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/img/export.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/img/export_black.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/img/favicon.ico" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/img/footer-logo.4d6d9fc.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/img/footer-logo.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/img/header-nav-logo.696e332.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/img/header-nav-logo.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/img/ionicons.a2c4a26.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/img/ionicons.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/img/logo.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/img/predict_logo.afb08ee.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/img/predict_logo.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/img/wel-logo.8bc68f1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/img/wel-logo.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/js/app.035e685abdfba4c758ef.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/js/app.035e685abdfba4c758ef.js.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/js/city_map.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/js/excel.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/js/manifest.2ae2e69a05c33dfc65f8.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/js/manifest.2ae2e69a05c33dfc65f8.js.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/js/pol_info.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/js/provinces.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/js/vendor.a49a0c49cfe8809049f8.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/js/vendor.a49a0c49cfe8809049f8.js.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/map/china.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/map/city/110100.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/map/city/120100.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/map/city/130100.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/map/city/130200.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/map/city/130300.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/map/city/130400.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/map/city/130500.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/map/city/130600.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/map/city/130700.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/map/city/130800.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/map/city/130900.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/map/city/131000.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/map/city/131100.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/map/city/140100.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/map/city/140200.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/map/city/140300.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/map/city/140400.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/map/city/140500.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/map/city/140600.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/map/city/140700.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/map/city/140800.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/map/city/140900.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/map/city/141000.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/map/city/141100.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/map/city/150100.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/map/city/150200.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/map/city/150300.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/map/city/150400.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/map/city/150500.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/map/city/150600.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/map/city/150700.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/map/city/150800.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/map/city/150900.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/map/city/152200.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/map/city/152500.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/map/city/152900.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/map/city/210100.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/map/city/210200.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/map/city/210300.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/map/city/210400.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/map/city/210500.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/map/city/210600.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/map/city/210700.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/map/city/210800.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/map/city/210900.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/map/city/211000.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/map/city/211100.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/map/city/211200.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/map/city/211300.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/map/city/211400.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/map/city/220100.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/map/city/220200.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/map/city/220300.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/map/city/220400.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/map/city/220500.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/map/city/220600.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/map/city/220700.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/map/city/220800.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/map/city/222400.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/map/city/230100.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/map/city/230200.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/map/city/230300.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/map/city/230400.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/map/city/230500.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/map/city/230600.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/map/city/230700.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/map/city/230800.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/map/city/230900.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/map/city/231000.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/map/city/231100.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/map/city/231200.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/map/city/232700.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/map/city/310100.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/map/city/310200.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/map/city/320100.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/map/city/320200.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/map/city/320300.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/map/city/320400.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/map/city/320500.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/map/city/320600.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/map/city/320700.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/map/city/320800.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/map/city/320900.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/map/city/321000.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/map/city/321100.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/map/city/321200.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/map/city/321300.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/map/city/330100.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/map/city/330200.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/map/city/330300.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/map/city/330400.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/map/city/330500.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/map/city/330600.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/map/city/330700.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/map/city/330800.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/map/city/330900.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/map/city/331000.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/map/city/331100.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/map/city/340100.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/map/city/340200.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/map/city/340300.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/map/city/340400.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/map/city/340500.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/map/city/340600.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/map/city/340700.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/map/city/340800.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/map/city/341000.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/map/city/341100.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/map/city/341200.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/map/city/341300.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/map/city/341500.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/map/city/341600.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/map/city/341700.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/map/city/341800.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/map/city/350100.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/map/city/350200.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/map/city/350300.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/map/city/350400.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/map/city/350500.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/map/city/350600.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/map/city/350700.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/map/city/350800.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/map/city/350900.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/map/city/360100.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/map/city/360200.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/map/city/360300.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/map/city/360400.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/map/city/360500.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/map/city/360600.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/map/city/360700.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/map/city/360800.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/map/city/360900.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/map/city/361000.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/map/city/361100.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/map/city/370100.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/map/city/370200.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/map/city/370300.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/map/city/370400.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/map/city/370500.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/map/city/370600.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/map/city/370700.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/map/city/370800.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/map/city/370900.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/map/city/371000.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/map/city/371100.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/map/city/371200.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/map/city/371300.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/map/city/371400.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/map/city/371500.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/map/city/371600.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/map/city/371700.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/map/city/410100.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/map/city/410200.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/map/city/410300.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/map/city/410400.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/map/city/410500.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/map/city/410600.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/map/city/410700.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/map/city/410800.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/map/city/410900.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/map/city/411000.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/map/city/411100.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/map/city/411200.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/map/city/411300.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/map/city/411400.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/map/city/411500.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/map/city/411600.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/map/city/411700.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/map/city/420100.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/map/city/420200.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/map/city/420300.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/map/city/420500.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/map/city/420600.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/map/city/420700.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/map/city/420800.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/map/city/420900.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/map/city/421000.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/map/city/421100.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/map/city/421200.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/map/city/421300.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/map/city/422800.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/map/city/429000.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/map/city/430100.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/map/city/430200.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/map/city/430300.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/map/city/430400.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/map/city/430500.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/map/city/430600.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/map/city/430700.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/map/city/430800.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/map/city/430900.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/map/city/431000.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/map/city/431100.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/map/city/431200.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/map/city/431300.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/map/city/433100.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/map/city/440100.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/map/city/440200.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/map/city/440300.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/map/city/440400.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/map/city/440500.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/map/city/440600.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/map/city/440700.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/map/city/440800.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/map/city/440900.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/map/city/441200.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/map/city/441300.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/map/city/441400.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/map/city/441500.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/map/city/441600.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/map/city/441700.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/map/city/441800.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/map/city/441900.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/map/city/442000.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/map/city/445100.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/map/city/445200.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/map/city/445300.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/map/city/450100.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/map/city/450200.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/map/city/450300.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/map/city/450400.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/map/city/450500.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/map/city/450600.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/map/city/450700.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/map/city/450800.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/map/city/450900.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/map/city/451000.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/map/city/451100.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/map/city/451200.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/map/city/451300.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/map/city/451400.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/map/city/460100.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/map/city/460200.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/map/city/460300.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/map/city/469000.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/map/city/500100.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/map/city/510100.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/map/city/510300.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/map/city/510400.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/map/city/510500.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/map/city/510600.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/map/city/510700.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/map/city/510800.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/map/city/510900.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/map/city/511000.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/map/city/511100.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/map/city/511300.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/map/city/511400.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/map/city/511500.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/map/city/511600.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/map/city/511700.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/map/city/511800.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/map/city/511900.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/map/city/512000.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/map/city/513200.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/map/city/513300.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/map/city/513400.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/map/city/520100.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/map/city/520200.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/map/city/520300.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/map/city/520400.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/map/city/522200.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/map/city/522300.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/map/city/522400.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/map/city/522600.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/map/city/522700.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/map/city/530100.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/map/city/530300.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/map/city/530400.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/map/city/530500.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/map/city/530600.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/map/city/530700.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/map/city/530800.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/map/city/530900.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/map/city/532300.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/map/city/532500.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/map/city/532600.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/map/city/532800.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/map/city/532900.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/map/city/533100.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/map/city/533300.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/map/city/533400.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/map/city/540100.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/map/city/542100.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/map/city/542200.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/map/city/542300.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/map/city/542400.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/map/city/542500.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/map/city/542600.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/map/city/610100.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/map/city/610200.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/map/city/610300.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/map/city/610400.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/map/city/610500.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/map/city/610600.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/map/city/610700.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/map/city/610800.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/map/city/610900.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/map/city/611000.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/map/city/620100.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/map/city/620200.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/map/city/620300.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/map/city/620400.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/map/city/620500.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/map/city/620600.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/map/city/620700.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/map/city/620800.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/map/city/620900.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/map/city/621000.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/map/city/621100.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/map/city/621200.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/map/city/622900.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/map/city/623000.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/map/city/630100.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/map/city/632100.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/map/city/632200.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/map/city/632300.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/map/city/632500.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/map/city/632600.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/map/city/632700.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/map/city/632800.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/map/city/640100.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/map/city/640200.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/map/city/640300.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/map/city/640400.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/map/city/640500.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/map/city/650100.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/map/city/650200.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/map/city/652100.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/map/city/652200.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/map/city/652300.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/map/city/652700.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/map/city/652800.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/map/city/652900.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/map/city/653000.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/map/city/653100.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/map/city/653200.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/map/city/654000.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/map/city/654200.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/map/city/654300.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/map/city/659000.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/map/city/710000.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/map/city/810100.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/map/city/820000.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/map/city/china-main-city-map.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/map/map.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/map/province/anhui.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/map/province/aomen.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/map/province/beijing.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/map/province/chongqing.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/map/province/fujian.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/map/province/gansu.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/map/province/guangdong.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/map/province/guangxi.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/map/province/guizhou.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/map/province/hainan.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/map/province/hebei.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/map/province/heilongjiang.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/map/province/henan.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/map/province/hubei.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/map/province/hunan.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/map/province/jiangsu.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/map/province/jiangxi.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/map/province/jilin.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/map/province/liaoning.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/map/province/neimenggu.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/map/province/ningxia.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/map/province/qinghai.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/map/province/shandong.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/map/province/shanghai.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/map/province/shanxi.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/map/province/shanxi1.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/map/province/sichuan.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/map/province/tianjin.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/map/province/xianggang.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/map/province/xinjiang.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/map/province/xizang.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/map/province/yunnan.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/map/province/zhejiang.json" beforeDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -13,19 +431,19 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/aqdc/aqdc/settings.py">
+        <entry file="file://$PROJECT_DIR$/aqdc/aq_pred/utils.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="440">
-              <caret line="25" column="13" selection-start-line="25" selection-start-column="13" selection-end-line="25" selection-end-column="13" />
+            <state relative-caret-position="1780">
+              <caret line="90" column="9" selection-start-line="90" selection-start-column="9" selection-end-line="90" selection-end-column="9" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/.gitignore">
+        <entry file="file://$PROJECT_DIR$/aqdc/aq_pred/predict.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="423">
-              <caret line="45" column="6" selection-start-line="45" selection-start-column="6" selection-end-line="45" selection-end-column="6" />
+            <state relative-caret-position="403">
+              <caret line="21" column="45" lean-forward="true" selection-start-line="21" selection-start-column="45" selection-end-line="21" selection-end-column="45" />
             </state>
           </provider>
         </entry>
@@ -93,16 +511,17 @@
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="281" />
-    <option name="y" value="47" />
-    <option name="width" value="1213" />
-    <option name="height" value="918" />
+    <option name="x" value="472" />
+    <option name="y" value="52" />
+    <option name="width" value="1473" />
+    <option name="height" value="919" />
   </component>
   <component name="ProjectView">
     <navigator proportions="" version="1">
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -113,13 +532,17 @@
             <path>
               <item name="AQDC" type="b2602c69:ProjectViewProjectNode" />
               <item name="AQDC" type="462c0819:PsiDirectoryNode" />
-              <item name="aqdc" type="462c0819:PsiDirectoryNode" />
+              <item name="dist" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="AQDC" type="b2602c69:ProjectViewProjectNode" />
+              <item name="AQDC" type="462c0819:PsiDirectoryNode" />
+              <item name="static" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -127,16 +550,16 @@
     <property name="settings.editor.selected.configurable" value="editor.preferences.fonts.default" />
   </component>
   <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\35892\Desktop\AQDC\aqdc\aqdc" />
+      <recent name="C:\Users\35892\Desktop\AQDC\aqdc" />
+    </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="E:\gitRepo\AQDC\aqdc\aq_pred" />
       <recent name="D:\gitRepo\AQDC\aqdc" />
       <recent name="D:\gitRepo\AQDC\static" />
       <recent name="D:\gitRepo\AQDC\aqdc\aqdc" />
       <recent name="D:\gitRepo\AQDC\aqdc\aq_pred" />
-      <recent name="C:\Users\35892\Desktop\AQDC\aqdc\ip_query" />
-    </key>
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\35892\Desktop\AQDC\aqdc\aqdc" />
-      <recent name="C:\Users\35892\Desktop\AQDC\aqdc" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -266,10 +689,9 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
-    <editor active="true" />
+    <frame x="378" y="42" width="1178" height="735" extended-state="0" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.18692206" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.33450088" />
       <window_info id="Structure" order="1" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -280,7 +702,7 @@
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.32936078" />
       <window_info anchor="bottom" id="Version Control" order="7" weight="0.3286119" />
-      <window_info anchor="bottom" id="Terminal" order="8" visible="true" weight="0.22237961" />
+      <window_info anchor="bottom" id="Terminal" order="8" visible="true" weight="0.22222222" />
       <window_info anchor="bottom" id="Python Console" order="9" />
       <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
       <window_info anchor="right" id="Commander" order="0" weight="0.4" />
@@ -302,16 +724,6 @@
     <option name="LAST_COMMIT_MESSAGE" value="接口查询中删除对区域码为410200的数据查询" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/aqdc/ip_query/serializers.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="100">
-          <caret line="5" column="6" selection-start-line="5" selection-start-column="6" selection-end-line="5" selection-end-column="6" />
-          <folding>
-            <element signature="e#91#117#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/aqdc/aqdc/db_router.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-396">
@@ -535,20 +947,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/aqdc/aq_pred/predict.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="420">
-          <caret line="21" column="45" lean-forward="true" selection-start-line="21" selection-start-column="45" selection-end-line="21" selection-end-column="45" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/aqdc/aq_pred/utils.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1780">
-          <caret line="90" column="9" selection-start-line="90" selection-start-column="9" selection-end-line="90" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/aqdc/app/views.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="220">
@@ -589,17 +987,34 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/aqdc/aq_pred/y_params.txt">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="404">
+          <caret line="45" column="6" selection-start-line="45" selection-start-column="6" selection-end-line="45" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/aqdc/aqdc/settings.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="440">
+        <state relative-caret-position="379">
           <caret line="25" column="13" selection-start-line="25" selection-start-column="13" selection-end-line="25" selection-end-column="13" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/.gitignore">
+    <entry file="file://$PROJECT_DIR$/aqdc/aq_pred/utils.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="423">
-          <caret line="45" column="6" selection-start-line="45" selection-start-column="6" selection-end-line="45" selection-end-column="6" />
+        <state relative-caret-position="1780">
+          <caret line="90" column="9" selection-start-line="90" selection-start-column="9" selection-end-line="90" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/aqdc/aq_pred/predict.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="403">
+          <caret line="21" column="45" lean-forward="true" selection-start-line="21" selection-start-column="45" selection-end-line="21" selection-end-column="45" />
         </state>
       </provider>
     </entry>

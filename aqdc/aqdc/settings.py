@@ -25,8 +25,8 @@ SECRET_KEY = 'z4opnv-aoc5!iyo#7sc#d)yb1l7$k$^7-@&i=6c8n@kxi=l_!x'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['127.0.0.1', 'localhost', '118.25.18.117']
-# ALLOWED_HOSTS = ['*']
+# ALLOWED_HOSTS = ['127.0.0.1', 'localhost', '118.25.18.117']
+ALLOWED_HOSTS = ['*']   # 注意在uwsgi容器中设置允许所有访问
 
 # Application definition
 

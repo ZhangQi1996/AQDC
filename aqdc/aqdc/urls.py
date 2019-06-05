@@ -23,7 +23,7 @@ from xadmin.plugins import xversion
 xversion.register_models()
 
 urlpatterns = [
-    path(settings.VERSION + 'xadmin/', xadmin.site.urls),
+    path('xadmin/', xadmin.site.urls),
     path(settings.VERSION + 'app/', include('app.urls')),
     path(settings.VERSION + 'ip_query/', include('ip_query.urls')),
     path(settings.VERSION + 'aq_pred/', include('aq_pred.urls')),

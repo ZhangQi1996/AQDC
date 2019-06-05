@@ -43,4 +43,5 @@ coverage.xml
 # Sphinx documentation
 docs/_build/
 
+# ignore .idea dir
 .idea/

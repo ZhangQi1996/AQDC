@@ -317,21 +317,23 @@ def check_update_aq_pred_data():
                     global_aq_pred_data_set_model(get_model())  # 加载已经训练好的模型
                     global_aq_pred_data_release()
                 break
+        max_updated_time = CurData.objects.raw("SELECT * FROM cur_data WHERE TIME=(SELECT MAX(TIME) FROM cur_data) LIMIT 1")
+        max_updated_time = list(max_updated_time)[0].time
         # 超时
         zz_past_28 = list(CurData.objects.raw("SELECT * FROM cur_data WHERE city_code=%s AND "
-                                         "TIME > DATE_SUB(NOW(),INTERVAL %s HOUR)" % (410100, 30)))
+                                         "TIME > DATE_SUB('%s',INTERVAL %s HOUR)" % (410100, max_updated_time, 30)))
         if len(zz_past_28) >= 28:
             zz_past_28 = zz_past_28[len(zz_past_28) - 28:]
         xx_past_7 = list(CurData.objects.raw("SELECT * FROM cur_data WHERE city_code=%s AND "
-                                        "TIME > DATE_SUB(NOW(),INTERVAL %s HOUR)" % (410700, 9)))
+                                        "TIME > DATE_SUB('%s',INTERVAL %s HOUR)" % (410700, max_updated_time, 9)))
         if len(xx_past_7) >= 7:
             xx_past_7 = xx_past_7[len(xx_past_7) - 7:]
         ly_past_7 = list(CurData.objects.raw("SELECT * FROM cur_data WHERE city_code=%s AND "
-                                        "TIME > DATE_SUB(NOW(),INTERVAL %s HOUR)" % (410300, 9)))
+                                        "TIME > DATE_SUB('%s',INTERVAL %s HOUR)" % (410300, max_updated_time, 9)))
         if len(ly_past_7) >= 7:
             ly_past_7 = ly_past_7[len(ly_past_7) - 7:]
         xc_past_7 = list(CurData.objects.raw("SELECT * FROM cur_data WHERE city_code=%s AND "
-                                        "TIME > DATE_SUB(NOW(),INTERVAL %s HOUR)" % (411000, 9)))
+                                        "TIME > DATE_SUB('%s',INTERVAL %s HOUR)" % (411000, max_updated_time, 9)))
         if len(xc_past_7) >= 7:
             xc_past_7 = xc_past_7[len(xc_past_7) - 7:]
 

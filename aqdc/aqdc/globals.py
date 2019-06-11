@@ -2,7 +2,7 @@
     以下均为全局的变量，应当注意多线程安全问题
 """
 import time
-from threading import Lock
+from threading import Lock, Condition
 from rest_framework.response import Response
 from rest_framework import status
 from app.models import *
@@ -13,6 +13,68 @@ from aq_pred.model import get_model
 from aq_pred.utils import get_rlv_params, get_aqi_and_combine
 from aq_pred.predict import predict
 import keras.backend as K
+
+
+"""
+通过self._val的状态来控制读写
+1.当val > 0时说明有若干读线程才操作
+2.当val == 0时说明没有线程在进行读写
+3. 当val < 0说明有写线程在操作
+"""
+class RWLock(object):
+    """读写锁"""
+
+    def __init__(self, rn=5, wn=3):
+        self._val = 0
+        self._rt = 0    # 记录连续的读次数，解决写线程的饥饿现象
+        self._wt = 0    # 记录连续的写次数，解决读线程的饥饿现象
+        self._rn = rn  # 连续读的最大次数
+        self._wn = wn  # 连续写的最大次数
+        self._cond = Condition(Lock())
+
+    def reading_acquire(self, reading_timeout=None):
+        """
+        执行此函数后，若返回True后面代码是读安全的
+        这里默认blocking为True，即当acquire失败时一直等待直到成功，故外层可以只用if而不是while
+        reading_timeout是指将本读线程阻塞的最长时间，超过该时间就使其变成就绪态
+        """
+        with self._cond:    # with lock/cond的作用相当于自动获取（获取失败则忙等待）和释放锁(资源)
+            while self._val < 0 or self._rt >= self._rn:    # 有写操作时或有连续数次的读操作时
+                if self._rt >= self._rn:
+                    self._cond.notify()
+                self._cond.wait(timeout=reading_timeout)   # 将本读线程阻塞
+            else:   # 无写操作时（即val >= 0时）
+                self._val += 1  # 本读线程占领
+
+    def reading_release(self):
+        """读结束"""
+        with self._cond:
+            self._val -= 1
+            self._cond.notify()
+            self._rt += 1
+            self._wt = 0
+
+    def writing_acquire(self, writing_timeout=None):
+        """执行此函数后，后面代码是写安全的"""
+        with self._cond:  # with lock/cond的作用相当于自动获取（获取失败则忙等待）和释放锁(资源)
+            while self._val != 0 or self._wt >= self._wn:  # 有其他读写操作时或有连续数次的写操作时
+                if self._wt >= self._wn:
+                    self._cond.notify()
+                self._cond.wait(timeout=writing_timeout)  # 将本写线程阻塞
+            else:  # 无其他读写操作时（即val == 0时）
+                self._val -= 1  # 本写线程占领
+
+    def writing_release(self):
+        """写结束"""
+        # 考虑到写操作一般重要于读，所以先考虑通知阻塞的写线程
+        with self._cond:
+            self._val += 1  # 加一后必为0
+            self._cond.notify()
+            self._rt = 0
+            self._wt += 1
+
+
+
 
 # **********************************************************************************
 
@@ -26,12 +88,12 @@ import keras.backend as K
 global_cache = {
     'last_time': 0,
     'cur_data': None,
-    'lock': Lock(),
+    'lock': RWLock(),
 }
 
 global_err = {
     'err': False,
-    'lock': Lock(),
+    'lock': RWLock(),
 }
 
 global_city_code_to_city_name_map = {
@@ -48,7 +110,7 @@ global_aq_pred_data = {
     'zz_future_pred_4': None,
     'zz_past_pred_4': None,
     'model': None,
-    'lock': Lock(),
+    'lock': RWLock(),
 }
 
 # **********************************************************************************
@@ -67,36 +129,43 @@ def global_cache_time_interval_timeout(time_interval=600):
 
 
 def global_cache_get_last_time():
+    """需要在线程安全下调用"""
     return global_cache.get('last_time')
 
 
 def global_cache_set_last_time(last_time=time.time()):
+    """需要在线程安全下调用"""
     global_cache['last_time'] = last_time
 
 
 def global_cache_get_cur_data():
+    """需要在线程安全下调用"""
     return global_cache.get('cur_data')
 
 
 def global_cache_set_cur_data(cur_data: list):
+    """需要在线程安全下调用"""
     global_cache['cur_data'] = cur_data
 
 
-def global_cache_acquire(blocking=True, timeout=-1):
-    """
-    获取global_cache的锁
-    :param timeout: 设置获取锁的
-    :return:
-    """
-    return global_cache['lock'].acquire(blocking=blocking, timeout=timeout)
+def global_cache_reading_acquire(reading_timeout=None):
+    """获取global_cache的读锁"""
+    global_cache['lock'].reading_acquire(reading_timeout=reading_timeout)
 
 
-def global_cache_release():
-    """
-    释放global_cache的锁
-    :return:
-    """
-    global_cache['lock'].release()
+def global_cache_reading_release():
+    """释放global_cache的读锁"""
+    global_cache['lock'].reading_release()
+
+
+def global_cache_writing_acquire(writing_timeout=None):
+    """获取global_cache的写锁"""
+    global_cache['lock'].writing_acquire(writing_timeout=writing_timeout)
+
+
+def global_cache_writing_release():
+    """释放global_cache的写锁"""
+    global_cache['lock'].writing_release()
 
 
 def global_city_code_to_city_name_map_acquire(blocking=True, timeout=-1):
@@ -130,84 +199,103 @@ def global_aq_pred_data_interval_timeout(time_interval=600):
 
 
 def global_aq_pred_data_get_last_time():
+    """需要在线程安全下调用"""
     return global_aq_pred_data.get('last_time')
 
 
 def global_aq_pred_data_set_last_time(last_time=time.time()):
+    """需要在线程安全下调用"""
     global_aq_pred_data['last_time'] = last_time
 
 
 def global_aq_pred_data_get_zz_past_28():
+    """需要在线程安全下调用"""
     return global_aq_pred_data.get('zz_past_28')
 
 
 def global_aq_pred_data_set_zz_past_28(zz_past_28):
+    """需要在线程安全下调用"""
     global_aq_pred_data['zz_past_28'] = zz_past_28
 
 
 def global_aq_pred_data_get_xx_past_7():
+    """需要在线程安全下调用"""
     return global_aq_pred_data.get('xx_past_7')
 
 
 def global_aq_pred_data_set_xx_past_7(xx_past_7):
+    """需要在线程安全下调用"""
     global_aq_pred_data['xx_past_7'] = xx_past_7
 
 
 def global_aq_pred_data_get_ly_past_7():
+    """需要在线程安全下调用"""
     return global_aq_pred_data.get('ly_past_7')
 
 
 def global_aq_pred_data_set_ly_past_7(ly_past_7):
+    """需要在线程安全下调用"""
     global_aq_pred_data['ly_past_7'] = ly_past_7
 
 
 def global_aq_pred_data_get_xc_past_7():
+    """需要在线程安全下调用"""
     return global_aq_pred_data.get('xc_past_7')
 
 
 def global_aq_pred_data_set_xc_past_7(xc_past_7):
+    """需要在线程安全下调用"""
     global_aq_pred_data['xc_past_7'] = xc_past_7
 
 
 def global_aq_pred_data_get_zz_future_pred_4():
+    """需要在线程安全下调用"""
     return global_aq_pred_data.get('zz_future_pred_4')
 
 
 def global_aq_pred_data_set_zz_future_pred_4(zz_future_pred_4):
+    """需要在线程安全下调用"""
     global_aq_pred_data['zz_future_pred_4'] = zz_future_pred_4
 
 
 def global_aq_pred_data_get_zz_past_pred_4():
+    """需要在线程安全下调用"""
     return global_aq_pred_data.get('zz_past_pred_4')
 
 
 def global_aq_pred_data_set_zz_past_pred_4(zz_past_pred_4):
+    """需要在线程安全下调用"""
     global_aq_pred_data['zz_past_pred_4'] = zz_past_pred_4
 
 
 def global_aq_pred_data_get_model():
+    """需要在线程安全下调用"""
     return global_aq_pred_data.get('model')
 
 
 def global_aq_pred_data_set_model(model: Model):
+    """需要在线程安全下调用"""
     global_aq_pred_data['model'] = model
 
 
-def global_aq_pred_data_acquire(blocking=True, timeout=-1):
-    """
-    global_aq_pred_data
-    :param timeout: 设置获取锁的
-    :return:
-    """
-    return global_aq_pred_data['lock'].acquire(blocking=blocking, timeout=timeout)
+def global_aq_pred_data_reading_acquire(reading_timeout=None):
+    """获取global_aq_pred_data的读锁"""
+    return global_aq_pred_data['lock'].reading_acquire(reading_timeout=reading_timeout)
 
 
-def global_aq_pred_data_release():
-    """
-    global_aq_pred_data锁的释放
-    :return:
-    """
-    global_aq_pred_data['lock'].release()
+def global_aq_pred_data_reading_release():
+    """global_aq_pred_data读锁的释放"""
+    global_aq_pred_data['lock'].reading_release()
+
+
+def global_aq_pred_data_writing_acquire(writing_timeout=None):
+    """获取global_aq_pred_data的写锁"""
+    return global_aq_pred_data['lock'].writing_acquire(writing_timeout=writing_timeout)
+
+
+def global_aq_pred_data_writing_release():
+    """global_aq_pred_data写锁的释放"""
+    global_aq_pred_data['lock'].writing_release()
 
 # ***********************************************************
 
@@ -247,16 +335,17 @@ def send_bug_email(err: Exception):
 
 
 def global_err_addr(e):
-    """全局异常处理"""
-    if global_err['err'] is True:
-        print(e)
+    """线程安全全局异常处理，仅仅第一次出现异常时启用邮件通知机制"""
+    global_err['lock'].reading_acquire()
+    is_err = global_err['err']
+    global_err['lock'].reading_release()
+    if is_err:
+        print(repr(e))
     else:
-        while True:
-            if global_err['lock'].acquire():
-                send_bug_email(e)
-                global_err['lock'].release()
-                global_err['err'] = True
-                break
+        global_err['lock'].writing_acquire()
+        send_bug_email(e)
+        global_err['err'] = True
+        global_err['lock'].writing_release()
 
 
 def check_update_cur_data():
@@ -265,18 +354,21 @@ def check_update_cur_data():
     :return: True表示已经跟新
     warning：所有加锁情况均为写锁，没有读锁，可能存在写时读的异常状态
     """
+    global_cache_reading_acquire()  # 获取读锁
     if global_cache_time_interval_timeout():
         # 超时
+        global_cache_reading_release()  # 释放读锁
         data = CurData.objects.filter(city_code__startswith='41').order_by('-time')  # 获得所有河南的数据
         time_ = data[0].time
         cur_data = CurData.objects.filter(time=time_)  # 获取最新的全国数据
-        while True:
-            if global_cache_acquire():  # 获得缓存锁
-                global_cache_set_cur_data(cur_data=cur_data)  # 更新缓存
-                global_cache_set_last_time()  # 重置当前时间
-                global_cache_release()  # 释放缓存锁
-                return True
-    return False
+        global_cache_writing_acquire()  # 获得写锁
+        global_cache_set_cur_data(cur_data=cur_data)  # 更新缓存
+        global_cache_set_last_time()  # 重置当前时间
+        global_cache_writing_release()  # 释放写锁
+        return True
+    else:    # 不超时
+        global_cache_reading_release()  # 释放读锁
+        return False
 
 
 def catch_exception(func):
@@ -309,14 +401,16 @@ def check_update_aq_pred_data():
     :return: True表示已经跟新
     warning：所有加锁情况均为写锁，没有读锁，可能存在写时读的异常状态
     """
+    global_aq_pred_data_reading_acquire()   # 获得读锁
     if global_aq_pred_data_interval_timeout():
-        if global_aq_pred_data_get_model() is None:     # 加锁进行配置模型
-            while True:  # 更改model时加锁
-                if global_aq_pred_data_acquire():  # 获得缓存锁
-                    K.clear_session()
-                    global_aq_pred_data_set_model(get_model())  # 加载已经训练好的模型
-                    global_aq_pred_data_release()
-                break
+        if global_aq_pred_data_get_model() is None:
+            global_aq_pred_data_reading_release()   # 释放读锁
+            K.clear_session()
+            global_aq_pred_data_writing_acquire()  # 获得写锁
+            global_aq_pred_data_set_model(get_model())  # 加载已经训练好的模型
+            global_aq_pred_data_writing_release()   # 是放写锁
+        else:
+            global_aq_pred_data_reading_release()   # 释放读锁
         max_updated_time = CurData.objects.raw("SELECT * FROM cur_data WHERE TIME=(SELECT MAX(TIME) FROM cur_data) LIMIT 1")
         max_updated_time = list(max_updated_time)[0].time
         # 超时
@@ -404,15 +498,16 @@ def check_update_aq_pred_data():
             obj.pri_pollutant = '预测暂不支持首要污染物'
             _.append(obj)
         zz_future_pred_4 = _
-        while True:
-            if global_aq_pred_data_acquire():  # 获得锁
-                global_aq_pred_data_set_zz_past_28(zz_past_28)
-                global_aq_pred_data_set_xx_past_7(xx_past_7)
-                global_aq_pred_data_set_ly_past_7(ly_past_7)
-                global_aq_pred_data_set_xc_past_7(xc_past_7)
-                global_aq_pred_data_set_zz_future_pred_4(zz_future_pred_4)
-                global_aq_pred_data_set_zz_past_pred_4(zz_past_pred_4)
-                global_aq_pred_data_set_last_time()  # 重置当前时间
-                global_aq_pred_data_release()  # 释放锁
-                return True
-    return False
+        global_aq_pred_data_writing_acquire()   # 获得写锁
+        global_aq_pred_data_set_zz_past_28(zz_past_28)
+        global_aq_pred_data_set_xx_past_7(xx_past_7)
+        global_aq_pred_data_set_ly_past_7(ly_past_7)
+        global_aq_pred_data_set_xc_past_7(xc_past_7)
+        global_aq_pred_data_set_zz_future_pred_4(zz_future_pred_4)
+        global_aq_pred_data_set_zz_past_pred_4(zz_past_pred_4)
+        global_aq_pred_data_set_last_time()  # 重置当前时间
+        global_aq_pred_data_writing_release()  # 释放写锁
+        return True
+    else:
+        global_aq_pred_data_reading_release()   # 释放读锁
+        return False

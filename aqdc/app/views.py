@@ -91,7 +91,9 @@ class CurDataList(generics.ListCreateAPIView):
 	def get(self, request, *args, **kwargs):
 		check_update_cur_data()
 		# 使用缓存中的数据
+		global_cache_reading_acquire()
 		cur_data = global_cache_get_cur_data()
+		global_cache_reading_release()
 		serializer = self.serializer_class(cur_data, many=True)
 		return Response(serializer.data)
 
@@ -229,7 +231,10 @@ class CurDataDetail(generics.RetrieveUpdateDestroyAPIView):
 	def get(self, request, *args, **kwargs):
 		check_update_cur_data()		# 检查更新缓存
 		city_code = kwargs['city_code']
-		for item in global_cache_get_cur_data():
+		global_cache_reading_acquire()
+		cur_data = global_cache_get_cur_data()
+		global_cache_reading_release()
+		for item in cur_data:
 			if item.city_code == city_code:
 				return Response(self.serializer_class(item, many=False).data)
 		return Response({"detail": "未找到。"}, status=status.HTTP_404_NOT_FOUND)

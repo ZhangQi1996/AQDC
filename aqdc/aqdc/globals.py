@@ -24,54 +24,55 @@ import keras.backend as K
 class RWLock(object):
     """读写锁"""
 
-    def __init__(self, rn=5, wn=3):
+    def __init__(self, writing_first=True):
         self._val = 0
-        self._rt = 0    # 记录连续的读次数，解决写线程的饥饿现象
-        self._wt = 0    # 记录连续的写次数，解决读线程的饥饿现象
-        self._rn = rn  # 连续读的最大次数
-        self._wn = wn  # 连续写的最大次数
-        self._cond = Condition(Lock())
+        self._lock = Lock()
+        # 一个互斥锁下的两个条件变量
+        self._reading_cond = Condition(self._lock)
+        self._writing_cond = Condition(self._lock)
+        self._writing_first = writing_first
 
-    def reading_acquire(self, reading_timeout=None):
-        """
-        执行此函数后，若返回True后面代码是读安全的
-        这里默认blocking为True，即当acquire失败时一直等待直到成功，故外层可以只用if而不是while
-        reading_timeout是指将本读线程阻塞的最长时间，超过该时间就使其变成就绪态
-        """
-        with self._cond:    # with lock/cond的作用相当于自动获取（获取失败则忙等待）和释放锁(资源)
-            while self._val < 0 or self._rt >= self._rn:    # 有写操作时或有连续数次的读操作时
-                if self._rt >= self._rn:
-                    self._cond.notify()
-                self._cond.wait(timeout=reading_timeout)   # 将本读线程阻塞
+    def reading_require(self):
+        """执行此函数后，后面代码是读安全的"""
+        with self._lock:    # 获取（获取失败则忙等待）锁,结束时自动释放锁
+            while self._val < 0:    # 有写操作时
+                self._reading_cond.wait()   # 将本读线程阻塞在读变量上
             else:   # 无写操作时（即val >= 0时）
                 self._val += 1  # 本读线程占领
 
     def reading_release(self):
         """读结束"""
-        with self._cond:
+        with self._lock:
             self._val -= 1
-            self._cond.notify()
-            self._rt += 1
-            self._wt = 0
+            if self._val == 0:  # 无读线程操作时
+                if self._writing_first:     # 写优先
+                    self._writing_cond.notify()
+                    self._reading_cond.notify()
+                else:   # 读优先
+                    self._reading_cond.notify()
+                    self._writing_cond.notify()
+            else:
+                self._reading_cond.notify()
 
-    def writing_acquire(self, writing_timeout=None):
+    def writing_require(self):
         """执行此函数后，后面代码是写安全的"""
-        with self._cond:  # with lock/cond的作用相当于自动获取（获取失败则忙等待）和释放锁(资源)
-            while self._val != 0 or self._wt >= self._wn:  # 有其他读写操作时或有连续数次的写操作时
-                if self._wt >= self._wn:
-                    self._cond.notify()
-                self._cond.wait(timeout=writing_timeout)  # 将本写线程阻塞
+        with self._lock:  # with lock/cond的作用相当于自动获取（获取失败则忙等待）和释放锁(资源)
+            while self._val != 0:  # 有其他读写操作时或有连续数次的写操作时
+                self._writing_cond.wait()  # 将本写线程阻塞
             else:  # 无其他读写操作时（即val == 0时）
                 self._val -= 1  # 本写线程占领
 
     def writing_release(self):
         """写结束"""
         # 考虑到写操作一般重要于读，所以先考虑通知阻塞的写线程
-        with self._cond:
+        with self._lock:
             self._val += 1  # 加一后必为0
-            self._cond.notify()
-            self._rt = 0
-            self._wt += 1
+            if self._writing_first:
+                self._writing_cond.notify()
+                self._reading_cond.notify_all()
+            else:
+                self._reading_cond.notify()
+                self._writing_cond.notify()
 
 
 

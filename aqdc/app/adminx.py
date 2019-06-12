@@ -18,16 +18,7 @@ class GlobalSettings(object):
     menu_style = 'accordion'  #修改菜单栏 改成收缩样式
 
 
-@xadmin.sites.register(AqiInfo)
-class AqiInfoAdmin(object):
-    def get_city_name(self, obj):
-        map = get_global_city_code_to_city_name_map()
-        return map[obj.city_code]
 
-    get_city_name.short_description = u'城市/区域名'
-    get_city_name.allow_tags = True
-
-    list_display = ('get_city_name', 'city_code', 'date', 'pri_pollutant', 'aqi')
 
 
 # 由于不知道什么原因Prov的管理部分无法展示，找不出bug
@@ -53,3 +44,15 @@ class CurDataAdmin(object):
     get_city_name.short_description = u'城市/区域名'
     get_city_name.allow_tags = True
     list_display = ('get_city_name', 'city_code', 'time', 'aqi', 'pm2_5', 'pm10', 'so2', 'no2', 'co', 'o3', 'pri_pollutant',)
+
+
+@xadmin.sites.register(AqiInfo)
+class AqiInfoAdmin(object):
+    def get_city_name(self, obj):
+        map = get_global_city_code_to_city_name_map()
+        return map[obj.city_code]
+
+    get_city_name.short_description = u'城市/区域名'
+    get_city_name.allow_tags = True
+
+    list_display = ('get_city_name', 'city_code', 'date', 'aqi', 'pri_pollutant')

@@ -32,7 +32,7 @@ class RWLock(object):
         self._writing_cond = Condition(self._lock)
         self._writing_first = writing_first
 
-    def reading_require(self):
+    def reading_acquire(self):
         """执行此函数后，后面代码是读安全的"""
         with self._lock:    # 获取（获取失败则忙等待）锁,结束时自动释放锁
             while self._val < 0:    # 有写操作时
@@ -54,7 +54,7 @@ class RWLock(object):
             else:
                 self._reading_cond.notify()
 
-    def writing_require(self):
+    def writing_acquire(self):
         """执行此函数后，后面代码是写安全的"""
         with self._lock:  # with lock/cond的作用相当于自动获取（获取失败则忙等待）和释放锁(资源)
             while self._val != 0:  # 有其他读写操作时或有连续数次的写操作时
@@ -149,9 +149,9 @@ def global_cache_set_cur_data(cur_data: list):
     global_cache['cur_data'] = cur_data
 
 
-def global_cache_reading_acquire(reading_timeout=None):
+def global_cache_reading_acquire():
     """获取global_cache的读锁"""
-    global_cache['lock'].reading_acquire(reading_timeout=reading_timeout)
+    global_cache['lock'].reading_acquire()
 
 
 def global_cache_reading_release():
@@ -159,9 +159,9 @@ def global_cache_reading_release():
     global_cache['lock'].reading_release()
 
 
-def global_cache_writing_acquire(writing_timeout=None):
+def global_cache_writing_acquire():
     """获取global_cache的写锁"""
-    global_cache['lock'].writing_acquire(writing_timeout=writing_timeout)
+    global_cache['lock'].writing_acquire()
 
 
 def global_cache_writing_release():
@@ -279,9 +279,9 @@ def global_aq_pred_data_set_model(model: Model):
     global_aq_pred_data['model'] = model
 
 
-def global_aq_pred_data_reading_acquire(reading_timeout=None):
+def global_aq_pred_data_reading_acquire():
     """获取global_aq_pred_data的读锁"""
-    return global_aq_pred_data['lock'].reading_acquire(reading_timeout=reading_timeout)
+    return global_aq_pred_data['lock'].reading_acquire()
 
 
 def global_aq_pred_data_reading_release():
@@ -289,9 +289,9 @@ def global_aq_pred_data_reading_release():
     global_aq_pred_data['lock'].reading_release()
 
 
-def global_aq_pred_data_writing_acquire(writing_timeout=None):
+def global_aq_pred_data_writing_acquire():
     """获取global_aq_pred_data的写锁"""
-    return global_aq_pred_data['lock'].writing_acquire(writing_timeout=writing_timeout)
+    return global_aq_pred_data['lock'].writing_acquire()
 
 
 def global_aq_pred_data_writing_release():

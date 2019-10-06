@@ -38,7 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'app',
-    'ip_query',
+ #   'ip_query',
     'aq_pred',
     'rest_framework',
     'xadmin',   # 添加
@@ -125,17 +125,17 @@ DATABASES = {
         'NAME': 'aqdc',
         'USER': 'root',
         'PASSWORD': 'zq15067522063',
-        'HOST': '120.24.217.229',
+        'HOST': 'www.david-zhang.cn',
         'PORT': '3306',
     },
-    'ip_query': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'fis',
-        'USER': 'root',
-        'PASSWORD': 'zq15067522063',
-        'HOST': '120.24.217.229',
-        'PORT': '3306',
-    },
+    # 'ip_query': {
+    #     'ENGINE': 'django.db.backends.mysql',
+    #     'NAME': 'fis',
+    #     'USER': 'root',
+    #     'PASSWORD': 'zq15067522063',
+    #     'HOST': '120.24.217.229',
+    #     'PORT': '3306',
+    # },
 }
 
 DATABASE_ROUTERS = ['aqdc.db_router.DatabaseAppsRouter']
